@@ -20,7 +20,7 @@
 		<a href="#" ng-click="vm.showCompleted = true" ng-show="(vm.showCompleted === false)">Show completed</a>
 		<a href="#" ng-click="vm.showCompleted = false" ng-show="(vm.showCompleted === true)">Hide completed</a>
 
-		<ul ng-repeat="(key, value) in vm.todos" ng-show="(vm.change_id === null)">
+		<ul ng-repeat="(key, value) in vm.todos | orderBy:'title':true" ng-show="(vm.change_id === null)">
 			<li ng-class="{completed: value.completed}" ng-show="((vm.showCompleted && value.completed) || (!value.completed && !vm.showCompleted))">
 				<h2>{{value.title}}</h2>
 				<p>{{value.text}}</p>
