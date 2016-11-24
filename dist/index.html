@@ -4,17 +4,21 @@
 	<meta charset="UTF-8">
 	<title>AngularJS ToDo App</title>
 	
-	<link rel="stylesheet" type="text/css" href="css/common.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
 
 	<script type="text/javascript" src="js/common.min.js"></script>
 </head>
 <body ng-controller="CommonCtrl as vm">
+	<a href="#" ng-click="vm.showCompleted = true" ng-show="(vm.showCompleted === false)">Show completed</a>
+	<a href="#" ng-click="vm.showCompleted = false" ng-show="(vm.showCompleted === true)">Hide completed</a>
+
 	<ul ng-repeat="(key, value) in vm.todos">
-		<li>
+		<li ng-class="{completed: value.completed}" ng-show="((vm.showCompleted && value.completed) || (!value.completed && !vm.showCompleted))">
 			<h2>{{value.title}}</h2>
 			<p>{{value.text}}</p>
 			<a href="#" ng-click="vm.editTask(key)">Change</a>
 			<a href="#" ng-click="vm.removeTask(key)">Remove</a>
+			<a href="#" ng-click="vm.completeTask(key)">Mark as completed</a>
 		</li>
 	</ul>
 

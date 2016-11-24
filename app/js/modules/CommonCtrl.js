@@ -11,6 +11,7 @@
 		var vm = this;
 
 		vm.change_id = null;
+		vm.showCompleted = false;
 
 		vm.todos = StorageService.retrieveData() || [];
 
@@ -20,15 +21,22 @@
 			completed: false
 		}
 
-		vm.clearFields = clearFields;
+
 		vm.addTask = addTask;
 		vm.editTask = editTask;
 		vm.changeTask = changeTask;
 		vm.removeTask = removeTask;
+		vm.completeTask = completeTask;
+
+		$scope.$watch('todos', _todosSave, true);
 
 		//////////////
 
-		function clearFields() {
+		function _todosSave() {
+			StorageService.saveData(vm.todos);
+		}
+
+		function _clearFields() {
 			vm.todo = {
 				title: '',
 				text: '',
@@ -39,8 +47,8 @@
 
 		function addTask() {
 			vm.todos.push(vm.todo);
-			StorageService.saveData(vm.todos);
-			vm.clearFields();
+			vm.showCompleted = false;
+			_clearFields();
 		};
 
 		
@@ -51,9 +59,8 @@
 		};
 		function changeTask() {
 			vm.todos[vm.change_id] = vm.todo;
-			StorageService.saveData(vm.todos);
 			vm.change_id = null;
-			vm.clearFields();
+			_clearFields();
 		};
 
 
@@ -61,8 +68,11 @@
 			var isRemove = confirm("Are you sure about delete this task?");
 			if (isRemove) {
 				vm.todos.splice(task_id, 1);
-				StorageService.saveData(vm.todos);
 			}
+		}
+
+		function completeTask(task_id) {
+			vm.todos[task_id].completed = true;
 		}
 	}
 
