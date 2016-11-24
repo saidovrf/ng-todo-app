@@ -13,11 +13,14 @@
 		<li>
 			<h2>{{value.title}}</h2>
 			<p>{{value.text}}</p>
+			<a href="#" ng-click="vm.editTask(key)">Change</a>
+			<a href="#" ng-click="vm.removeTask(key)">Remove</a>
 		</li>
 	</ul>
 
 	<input type="text" name="title" ng-model="vm.todo.title">
 	<input type="text" name="text" ng-model="vm.todo.text">
-	<button ng-click="vm.addTask()" ng-disabled="(!vm.todo.title || !vm.todo.text)">Add task</button>
+	<button ng-click="vm.addTask()" ng-disabled="(!vm.todo.title || !vm.todo.text)" ng-show="(vm.change_id === null)">Add task</button>
+	<button ng-click="vm.changeTask()" ng-disabled="(!vm.todo.title || !vm.todo.text)" ng-show="(vm.change_id !== null)">Finish edit</button>
 </body>
 </html>
