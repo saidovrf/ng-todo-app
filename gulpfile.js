@@ -25,7 +25,7 @@ gulp.task('serve', ['html', 'sass', 'js'], function() {
 gulp.task('js', function() {
   return gulp.src(['app/js/angular.js', 'app/js/vendors/*.js', 'app/js/app.js', 'app/js/modules/*.js'])
     .pipe(concat('common.min.js'))
-    //.pipe(uglyfly())
+    .pipe(uglyfly())
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -45,3 +45,5 @@ gulp.task('html', function(){
 });
 
 gulp.task('default', ['serve']);
+
+gulp.task('build', ['html', 'sass', 'js'])
