@@ -21,7 +21,6 @@
 			completed: false
 		}
 
-
 		vm.addTask = addTask;
 		vm.editTask = editTask;
 		vm.changeTask = changeTask;
