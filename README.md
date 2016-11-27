@@ -1,5 +1,13 @@
 # ToDo App
 
-Simple ToDo-app on AngularJS with data local storage.
+Simple ToDo-app on AngularJS with data local storage and Karma/Jasmine unit testing.
 
-For builds and livereloading from the root folder run "gulp" from terminal.
+For build and livereload
+```sh
+$ gulp
+```
+
+For run tests
+```sh
+$ karma start
+```
