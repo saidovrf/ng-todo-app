@@ -16,3 +16,6 @@ For run tests
 ```sh
 $ karma start
 ```
+
+For a testing right now
+[GitHub Pages](https://saidovrf.github.io/ng-todo-app/dist)
